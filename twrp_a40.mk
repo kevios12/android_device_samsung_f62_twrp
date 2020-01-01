@@ -24,10 +24,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 PRODUCT_NAME := twrp_a40
 PRODUCT_DEVICE := a40
 PRODUCT_MODEL := SM-A405F

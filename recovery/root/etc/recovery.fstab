@@ -11,6 +11,8 @@
 /data		ext4	/dev/block/platform/13500000.dwmmc0/by-name/userdata	flags=wait;encryptable=footer;length=-20480
 /cache		ext4	/dev/block/platform/13500000.dwmmc0/by-name/cache	flags=backup=1;display="Cache"
 /efs		ext4	/dev/block/platform/13500000.dwmmc0/by-name/efs		flags=backup=1;display="EFS"
+/dtb		    emmc	/dev/block/platform/13500000.dwmmc0/by-name/dtb		    flags=backup=0;flashimg;display="Dt Image"
+/dtbo		    emmc	/dev/block/platform/13500000.dwmmc0/by-name/dtbo	    flags=backup=0;flashimg;display="Dtbo Image"
 /cpefs		ext4	/dev/block/platform/13500000.dwmmc0/by-name/cpefs	flags=backup=1;subpartitionof=/efs
 /modem		emmc	/dev/block/platform/13500000.dwmmc0/by-name/radio	flags=backup=1;display="Modem"
 /misc		emmc	/dev/block/platform/13500000.dwmmc0/by-name/misc	flags=backup=1;display="Misc"

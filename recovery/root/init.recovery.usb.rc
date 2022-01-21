@@ -23,6 +23,7 @@ on init
 	restorecon_recursive /dev/usb-ffs/adb
 
 on boot
+    mkdir /sideload
     write /sys/kernel/config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     write /sys/kernel/config/usb_gadget/g1/strings/0x409/manufacturer "SAMSUNG"
     write /sys/kernel/config/usb_gadget/g1/strings/0x409/product "SAMSUNG_Android"
@@ -416,6 +417,15 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,conn_gadget,adb
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=sideload
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/kernel/config/usb_gadget/g1/idVendor 0x04E8
+    write /sys/kernel/config/usb_gadget/g1/idProduct 0x6860
+    write /sys/class/android_usb/android0/f_ffs/aliases adb
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/kernel/config/usb_gadget/g1/UDC "13600000.dwc3"
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
 
 # adb only USB configuration For VTS Test
 # This is the fallback configuration if the

@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/a40
+DEVICE_PATH := device/samsung/a40
 
 # Bootloader
 BOARD_VENDOR := samsung
@@ -37,12 +37,8 @@ TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
-TARGET_BOARD_SUFFIX := _64
 
-TARGET_CPU_SMP := true
-ENABLE_CPUSETS := true
-ENABLE_SCHEDBOOST := true
-
+# Build Sytem
 ALLOW_MISSING_DEPENDENCIES := true
 
 # File systems
@@ -54,8 +50,8 @@ TARGET_BOARD_PLATFORM := exynos5
 TARGET_BOARD_PLATFORM_GPU := mali-g71
 
 # Kernel
-TARGET_PREBUILT_KERNEL := device/samsung/a40/prebuilt/Image
-BOARD_PREBUILT_DTBOIMAGE := device/samsung/a40/prebuilt/recoverydtbo
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/recoverydtbo
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_KERNEL_ARCH := arm64
 
@@ -73,7 +69,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset 
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --pagesize $(BOARD_KERNEL_PAGESIZE) --board "SRPSA10A004RU"
 BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_PREBUILT_DTBOIMAGE)
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/a40/mkboot/bootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkboot/bootimg.mk
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -101,8 +97,6 @@ TARGET_COPY_OUT_VENDOR := vendor
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
-TW_INCLUDE_CRYPTO := false
-TW_INCLUDE_CRYPTO_FBE := false
 
 # TWRP specific build flags
 TW_DEVICE_VERSION := 0_Kevios12
@@ -128,6 +122,7 @@ TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_EXCLUDE_NANO := false
 RECOVERY_SDCARD_ON_DATA := true
 
 # LZMA Compression

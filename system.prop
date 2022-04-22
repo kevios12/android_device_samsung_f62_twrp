@@ -1,5 +1,5 @@
-ro.display.series=Samsung Galaxy A40
-ro.product.board=universal7904
+ro.display.series=Samsung Galaxy F62
+ro.product.board=universal9825
 ro.board.platform=exynos5
-sys.usb.controller=13600000.dwc3
-ro.boot.bootdevice=13500000.dwmmc0
+sys.usb.controller=10c00000.dwc3
+ro.boot.bootdevice=13d60000.ufs
